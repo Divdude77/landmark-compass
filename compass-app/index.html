@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="New Sidequest Unlocked">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/fontawesome.min.css">
+    <link rel="stylesheet" href="/css/solid.min.css">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/images/icons/192.png">
+    <title>Compass</title>
+</head>
+<body>
+    <div id="circle">
+        <div class="direction" id="N">
+            <div></div>
+            <p>N</p>
+        </div>
+        <div class="direction" id="E">
+            <div></div>
+            <p>E</p>
+        </div>
+        <div class="direction" id="S">
+            <div></div>
+            <p>S</p>
+        </div>
+        <div class="direction" id="W">
+            <div></div>
+            <p>W</p>
+        </div>
+    </div>
+
+    <div id="start">
+        <div>
+            <p>Start</p>
+        </div>
+    </div>
+
+    <div id="accuracy-text" style="display: none;"><span style="font-weight: bolder;">NOTE:</span> GPS signal weak. Consider stepping into an open space for improved accuracy.</div>
+    
+    <div id="top-bar">
+        <div id="stats-text">
+            <div><span style="font-weight: bold;">Nearest: </span><i id="nearest-icon"></i><span style="color: #cecece" id="nearest">-</span></div>
+            <span style="font-weight: bold;">GPS Accuracy: </span><span style="color: #cecece" id="accuracy">-</span>
+        </div>
+        
+        <button id="settings">+</button>
+    </div>
+
+    <div id="settings-menu">
+        <div class="menu-header">
+            <span>POINTS</span>
+            <span id="close-settings">×</span>
+        </div>
+        <div id="pointers-container">
+            <div id="add-pointer">+</div>
+        </div>
+    </div>
+
+    <div id="icon-menu">
+        <div class="menu-header">
+            <span>Select an Icon</span>
+            <span id="close-icons">×</span>
+        </div>
+        <input type="text" id="icon-search" placeholder="Search for an icon...">
+        <div id="icon-container"></div>
+        <div id="icon-error"></div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('sw.js').then(function(registration) {
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                }, function(err) {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
+        }
+    </script>
+</body>
+</html>
