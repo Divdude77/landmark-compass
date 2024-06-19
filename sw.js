@@ -1,7 +1,7 @@
 const CACHE_NAME = 'compass-cache-v2';
 var urlsToCache = [
     '.',
-    './index.html',
+    './compass.html',
     './css/style.css',
     './css/fontawesome.min.css',
     './css/solid.min.css',
