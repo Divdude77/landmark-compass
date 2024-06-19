@@ -1,0 +1,355 @@
+/* * {
+    touch-action: none !important;
+} */
+
+html {
+    background: #000000;
+    color: #FFFFFF;
+    font-family: monospace;
+}
+
+body {
+    margin: 0;
+}
+
+#settings-menu, #icon-menu {
+    width: 80vw;
+    height: max(50vh, 300px);
+    background: black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid white;
+    flex-direction: column;
+    text-align: center;
+    display: none;
+}
+
+.menu-header {
+    margin-block: 10px;
+    position: relative;
+}
+
+.menu-header > span:nth-child(1) {
+    font-size: 1.25em;
+    font-weight: bold;
+}
+
+.menu-header > span:nth-child(2) {
+    position: absolute;
+    font-size: 2.5em;
+    top: 50%;
+    right: 2%;
+    transform: translate(0, -55%);
+}
+
+#pointers-container {
+    overflow: scroll;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+}
+
+#pointers-container > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid white;
+}
+
+#pointers-container > div > * {
+    margin: 0;
+}
+
+#pointers-container > div span {
+    color: #7a7a7a;
+}
+
+#pointers-container > div > i:nth-child(1) {
+    font-size: 1.5em;
+    width: 15px;
+}
+
+#pointers-container > div > .del {
+    color: red;
+}
+
+#pointers-container input[type="number"] {
+    background: black;
+    color: white;
+    border: none;
+    font-family: inherit;
+    width: 100%;
+}
+
+#pointers-container > div > div {
+    flex-grow: 1;
+    max-width: 50%;
+}
+
+#pointers-container > div > div > div {
+    display: flex;
+    align-items: center;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+#pointers-container > #add-pointer { 
+    font-size: 1.5em;
+    justify-content: center;
+    border-bottom: none;
+    background: white;
+    color: black;
+}
+
+#icon-search {
+    background: black;
+    color: white;
+    border: none;
+    font-family: inherit;
+    padding: 10px;
+}
+
+#icon-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 2em);
+    font-size: 2em;
+    overflow: scroll;
+}
+
+#icon-container > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+}
+
+#icon-error {
+    padding: 2px; 
+    color: red;
+    margin-top: auto;
+}
+
+
+#accuracy-text {
+    color: red;
+    text-align: center;
+    position: absolute;
+    bottom: 2%;
+}
+
+#top-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
+    opacity: 0;
+    animation: fade_in 1s;
+    animation-delay: 4s;
+    animation-fill-mode: forwards;
+}
+
+#settings {
+    border: 0;
+    color: white;
+    background: black;
+    font-size: 1.5em;
+    padding: 0;
+    margin-top: -10px
+}
+
+#start {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 1.5em;
+    margin: 0;
+    background-color: white;
+    color: black;
+    padding: 20px;
+    animation: expand_in 1s;
+    animation-fill-mode: forwards;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    transition: 1s;
+}
+
+#circle {
+    display: none;
+    border: 1px solid white;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: circle_scale_in 1.5s;
+    animation-fill-mode: forwards;
+    transition: opacity 2s;
+}
+
+.pointer, .direction {
+    transform-origin: left center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+    height: 1px;
+    display: flex;
+    justify-content: end;
+    width: 47%;
+    align-items: center;
+    animation: fade_in 1s;
+    animation-delay: 4s;
+    animation-fill-mode: forwards;
+    font-size: 0.6em;
+}
+
+.direction {
+    opacity: 1;
+    width: 59%;
+    justify-content: space-between;
+    animation: none;
+    z-index: -2;
+}
+
+.direction div {
+    border: 1px dotted rgba(255, 255, 255, 0.442);
+    animation: wipe_in 1s;
+}
+
+.direction p {
+    font-size: 2.5em;
+    font-weight: bold;
+    opacity: 0;
+    animation: fade_in 1s;
+}
+
+#E p, #E div {
+    animation-delay: 1.5s;
+    animation-fill-mode: forwards;
+}
+
+#S p, #S div {
+    animation-delay: 2s;
+    animation-fill-mode: forwards;
+}
+
+#W p, #W div {
+    animation-delay: 2.5s;
+    animation-fill-mode: forwards;
+}
+
+#N p, #N div {
+    animation-delay: 3s;
+    animation-fill-mode: forwards;
+}
+
+#N {
+    color: red;
+}
+
+.pointer > * {
+    transition: font-size 1s;
+}
+
+.pointer .arrow {
+    width: 0px;
+    height: 0px;
+    border-style: solid;
+    border-width: 1em 0 1em 0.6em;
+    border-color: transparent transparent transparent #ffffff;
+    margin-left: 0.75em;
+}
+
+.pointer > i {
+    font-size: 2em;
+    opacity: 90%;
+}
+
+.active {
+    position: absolute;
+    transform: none !important;
+    z-index: 99999;
+}
+
+.active .arrow {
+    opacity: 0;
+}
+
+.active i {
+    display: block;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    transform: translate(-50%, -50%) rotate(0deg) !important;
+    font-size: 15em !important;
+}
+
+.active img {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(0deg) !important;
+    font-size: 11em !important;
+}
+
+@keyframes circle_scale_in {
+    0% {
+        width: 0;
+        height: 0;
+    }
+    100% {
+        width: min(75vw, 75vh);
+        height: min(75vw, 75vh);
+    }
+}
+
+@keyframes expand_in {
+    0% {
+        width: 0%;
+        height: 0%;
+    }
+    100% {
+        width: min(15vw, 15vh);
+        height: min(15vw, 15vh);
+    }
+}
+
+@keyframes fade_in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes wipe_in {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: min(37.5vw, 37.5vh);
+    }
+}
