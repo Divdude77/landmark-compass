@@ -1,7 +1,7 @@
 {
     "name": "Compass",
     "short_name": "Compass",
-    "start_url": "/",
+    "start_url": "/landmark-compass",
     "display": "standalone",
     "background_color": "#000000",
     "theme_color": "#FFFFFF",
