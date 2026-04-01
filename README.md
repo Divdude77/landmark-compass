@@ -1,4 +1,4 @@
-# landmark-compass
+# Landmark Compass
 
 ### Compass that can point to any landmark(s) you want. Icons scale with distance.
 ### Available at: https://divdude77.github.io/landmark-compass/compass.html
